@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .signup-form {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 100px;
+    }
+
+    .signup-form h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .signup-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .signup-form label {
+      font-weight: bold;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="password"] {
+      height: 45px;
+      font-size: 16px;
+      border-radius: 5px;
+      padding-left: 15px;
+      box-shadow: none;
+      border: 1px solid #d8d8d8;
+    }
+
+    .signup-form input[type="text"]:focus,
+    .signup-form input[type="email"]:focus,
+    .signup-form input[type="password"]:focus {
+      border-color: #a8a8a8;
+    }
+
+    .signup-form .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      padding: 8px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      width: 100%;
+    }
+
+    .signup-form .btn-primary:hover {
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+
+    .signup-form .btn-link {
+      color: #007bff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="container">
+      <% if (flash) { %>
+          
+          <div class="alert alert-<%-flash.type%>"><%- flash.message %></div>
+      <% } %>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="signup-form">
+          <h2>Sign Up</h2>
+          <form method="post" action="/register">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter a password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <p class="text-center mt-3">
+              Already have an account? <a href="/login">Log in here</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
