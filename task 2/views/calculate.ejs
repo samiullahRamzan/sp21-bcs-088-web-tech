@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+    <!-- <link rel="stylesheet" href="../public/css/calculate.css"> -->
+    <style>
+        .formdiv{
+            display: flex;
+        }
+        .operand1{
+            margin-right: 20px;
+        }
+        .operation{
+            margin-right: 20px;
+            margin-top: 23px;
+        }
+        
+        .submitBtn input{
+            background-color:blueviolet;
+            color: white;
+        }
+        .heading{
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Calculate</h1>
+        
+        <form action="/calculate" method="post">
+            <div class="formdiv">
+                <div class="operand1">
+                    <label for="operand1">Operand 1</label><br>
+                    <input type="text" id="operand1" name="operand1"><br>
+
+                </div>
+                <div class="operation">
+                    <select name="operation">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="add">+</option>
+                        <option value="subtract">-</option>
+                        <option value="multiply">x</option>
+                        <option value="divide">/</option>
+                    </select>
+                
+                </div>
+                <div class="operand2">
+                    <label for="operand2">Operand 2</label><br>
+                    <input type="text" id="operand2" name="operand2"><br><br>
+                </div>
+            </div>
+            <div class="submitBtn">
+                <input type="submit" value="Calculate">
+            </div>
+        </form>
+
+      <% if (results && results.length > 0) { %>
+            <h2>Output</h2>
+            <table>
+                <tr class="heading">
+                    <th>Operand 1</th>
+                    <th>Operand 2</th>
+                    <th>Operation</th>
+                    <th>Result</th>
+                </tr>
+                <% results.forEach(result => { %>
+                    <tr class="allValue">
+                        <td><%= result.firstValue %></td>
+                        <td><%= result.secondValue %></td>
+                        <td><%= result.operation %></td>
+                        <td><%= result.result %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        <% } %>
+        
+        <script>
+            function validateForm() {
+                var operand1 = document.getElementsByName("operand1")[0].value;
+                var operation = document.getElementsByName("operation")[0].value;
+                var operand2 = document.getElementsByName("operand2")[0].value;
+        
+                if (!operand1 || !operation || !operand2) {
+                    alert("Please fill in all fields before submitting.");
+                    return false;
+                }
+        
+                // You can add more specific validation logic if needed
+        
+                return true;
+            }
+        </script>
+    </div>
+</body>
+</html>
+
